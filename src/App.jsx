@@ -46,7 +46,7 @@ function App() {
         <div style={{ marginTop: "20px" }}>
           <p>Scan this QR code to view the model in AR:</p>
           <QRCode
-            value={modelURL}
+            value={"https://arnxtdemo.vercel.app/"}
             size={256}
             style={{ margin: "0 auto" }}
           />
