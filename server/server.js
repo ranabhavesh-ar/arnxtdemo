@@ -37,27 +37,28 @@ app.post("/upload", upload.single("model"), async (req, res) => {
   try {
     const file = req.file;
 
-    const SERVER_IP = "192.168.1.108"; 
-    const PORT = process.env.PORT || 5000;
+    const SERVER_URL = process.env.SERVER_URL; 
+  
 
-    const modelURL = `http://${SERVER_IP}:${PORT}/models/${file.filename}`;
+    const glbUrl = `${SERVER_URL}/models/${file.filename}`;
 
     const newModel = new Model({
       filename: file.filename,
-      url: modelURL,
+      glbUrl,
+      usdzUrl: null, // add later
     });
 
     await newModel.save();
 
     res.json({
       success: true,
-      url: modelURL,
       id: newModel._id,
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 
 // Fetch model by ID

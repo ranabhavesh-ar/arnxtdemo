@@ -2,7 +2,15 @@ const mongoose = require("mongoose");
 
 const modelSchema = new mongoose.Schema({
   filename: String,
-  url: String,
+  glbUrl: {
+    type: String,
+    required: true,
+  },
+  usdzUrl: {
+    type: String,
+    default: null, 
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
